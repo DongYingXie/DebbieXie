@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="Switch">
+		<input type="checkbox" class="switchInput" id="switch">
+		<label for="switch" class="switchLabel"></label>
+	</div>
+	<style type="text/css">
+	.Switch{
+		height: 100px;
+		width: 200px;
+	}
+	.switchInput{
+		position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+	}
+	.switchInput + .switchLabel{
+		height: 50px;
+		width: 102px;
+		display: inline-block;
+		border-radius: 50px;
+		border: 1px solid red;
+		position: relative;
+
+	}
+	.switchInput + .switchLabel:before,.switchInput + .switchLabel:after{
+		position: absolute;
+		top:0px;
+		left:0px;
+		bottom: 0px;
+		right: 0px;
+		content: '';
+		transition:all 1s;
+		display: inline-block;
+	}
+	.switchInput + .switchLabel:before{
+		background-color: #f1f1f1;
+		border-radius: 50px;
+	}
+	.switchInput + .switchLabel:after{
+		height: 48px;
+		border: 2px solid blue;
+		border-radius: 100%;
+		width:50px;
+		background-color: #fff;
+	}
+	.switchInput:checked + .switchLabel:after{
+		margin-left: 48px;
+	}
+	.switchInput:checked + .switchLabel:before{
+		background-color: #8ce196;
+	}
+	</style>
+</body>
+</html>

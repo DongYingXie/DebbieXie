@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="box">
+	<span class="spaner"></span>
+</div>
+<div class="circleAll">
+	实心圆
+</div>
+<div class="circleBorder">
+	空心圆
+</div>
+<div class="circleHalfone">
+	半圆
+</div>
+<div class="circleHalfTwo">
+	半圆
+</div>
+<div class="circlequrat">
+	四分之一圆
+</div>
+<div class="progress">
+	<div class="right">
+		
+	</div>
+	<div class="mask"></div>
+</div>
+<style type="text/css">
+	.box{
+		height: 100px;
+		width: 100px;
+		position: relative;
+		background-color: red;
+		overflow: hidden;
+	}
+	.spaner{
+		height: 10px;
+		width: 70px;
+		background-color: blue;
+		position: absolute;
+		top:15px;
+		left: -15px;
+		-webkit-transform:rotate(-45deg);
+		        transform:rotate(-45deg);
+	}
+	.circleAll{
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		background-color: red;
+		text-align: center;
+	}
+	.circleBorder{
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		border: 3px solid yellow;
+		text-align: center;
+	}
+	.circleHalfone{
+		height: 100px;
+		width: 50px;
+		border-radius: 50px 0 0 50px;
+		background-color: #00ff00;
+		text-align: center;
+	}
+	.circleHalfTwo{
+		height: 50px;
+		width: 100px;
+		background-color: #ff00ff;
+		border-radius: 100px 100px 0 0;
+	}
+	.circlequrat{
+		height: 100px;
+		width: 100px;
+		background-color: #0000ff;
+		border-radius: 100px 0 0 0;
+	}
+	.progress{
+		position: relative;
+		height: 100px;
+		width: 100px;
+	}
+	.right{
+		height: 100px;
+		width: 100px;
+		background-color: #000;
+		border-radius: 50%;
+		//clip:rect(0,auto,auto,50px);
+		position: absolute;
+		top: 0;
+		left:0;
+	}
+	.mask{
+    height: 90px;
+    width: 90px;
+    border-radius: 45px;
+    position: absolute;
+    top:5px;
+    left: 5px;
+    background-color: #fff;
+	}
+</style>	
+</body>
+</html>

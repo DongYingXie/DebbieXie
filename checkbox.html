@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div class="checkBox">
+		<input type="checkbox" id="mycheckbox" class="checkboxInput">
+		<label for="mycheckbox" class="checkboxLabel">testddddd</label>
+	</div>
+	<style type="text/css">
+	.checkbox{
+		height: 100px;
+		width: 100px;
+	}
+	.checkboxInput{
+
+visibility: hidden;
+
+	}
+	.checkboxLabel{
+		display: inline-block;
+		height: 50px;
+		width: 100px;
+		padding-left: 60px;
+		line-height: 50px;
+		position: relative;
+	}
+	.checkboxLabel:before,.checkboxLabel:after{
+		content: '';
+	}
+	.checkboxLabel:before{
+		position: absolute;
+		top:0px;
+		left:0px;
+		width: 50px;
+		height: 50px;
+		border-radius: 100%;
+		border: 1px solid red;
+	}
+	.checkboxLabel:after{
+		position: absolute;
+		top:25px;
+		left: 25px;
+		height: 10px;
+		width: 20px;
+		margin-top: -5px;
+		margin-left: -10px;
+		border-left: 1px solid red;
+		border-bottom: 1px solid red;
+		-webkit-transform:rotate(-45deg);
+		        transform:rotate(-45deg);
+		display: none;
+	}
+	.checkboxInput:checked + .checkboxLabel:after{
+		display: block;
+	}
+	</style>
+</body>
+</html>
