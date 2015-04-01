@@ -9,7 +9,7 @@ http.createServer(function (req, res) {
         pathname+="/";
     }
     if (pathname.charAt(pathname.length-1)=="/"){
-        pathname+="credit-card_en.html";
+        pathname+="index.html";
     }
   
     fs.exists(pathname,function(exists){
