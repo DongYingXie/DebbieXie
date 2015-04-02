@@ -374,3 +374,43 @@ $scope.htmls='<a href="http://baidu.com/" ng-click="test()">baidu</a> http://goo
     <p ng-bind-html="htmls | linky"></p>
     <p ng-bind-html="htmls | linky :'_blank'"></p>
 ```
+# 路由 $stateProvider /ui-router
+* 页面加载'angular-ui-router.min.js 和一个 ui-view 属性的便签；
+* 模块加入依赖 ui-router
+```html
+<div ui-view></div> 
+```
+```java
+var myapp=angular.module('myapp',['ui.router']);
+myapp.config(function($stateProvider) {
+    $stateProvider.state('demo1',{
+        url:'/demo1',
+        templateUrl:'demo.html'
+    })
+})
+```
+嵌入 
+```java 
+var myapp=angular.module('myapp',['ui.router']);
+myapp.config(function($stateProvider) {
+    $stateProvider.state('parent1',{
+        url:'/parent1',
+        templateUrl:'parent.html'
+    }).state('parent1.child',{
+        url:'/child',
+        templateUrl:'child.html'
+    }).state('parent2',{
+        url:'/parent2',
+        templateUrl:'parent.html'
+    })
+})
+```
+```html 
+<body ng-app="myapp" ng-controller="routerCtrl">
+<a href="#/parent1">parent1</a>
+<a href="#/parent2">parent2</a>
+<a href="#/parent1/child">child</a>
+<button ng-click="goto()">go parent1.child</button>
+<div ui-view></div>
+</body>
+```
