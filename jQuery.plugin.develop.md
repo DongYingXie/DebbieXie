@@ -25,7 +25,7 @@ jQuery.extend({foo:function(){
 jQuery.foo();//或者
 $.foo();
 ```
-### 1.2.1 jQuery.extend()
+### 1.2.1 jQuery.extend(object)
 
 ```java
 (function($){
