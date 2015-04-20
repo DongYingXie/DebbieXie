@@ -25,6 +25,17 @@ jQuery.extend({foo:function(){
 jQuery.foo();//或者
 $.foo();
 ```
+### 1.2.1 jQuery.extend(object)
+
+```java
+(function($){
+$.extend({
+"pluginName":function(pra_value){
+//插件实现的代码
+}
+});
+})(jQuery);
+```
 ### 1.3 使用命名空間
 ```java
 jQuery.PluginTest={
