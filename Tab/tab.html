@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="tab.css"/>
+</head>
+<body>
+<div class="tabBox">
+    <div class="tabTitle">
+        <ul class="">
+            <li><a  class="selected" for-tab="tab1">tab1</a></li>
+            <li><a  for-tab="tab2" class="">tab2</a></li>
+            <li><a  for-tab="tab3" class="">tab3</a></li>
+            <li><a  for-tab="tab4" class="">tab4</a></li>
+        </ul>
+    </div>
+    <div class="tabcontents">
+        <div class="tabcontent tab1 ">
+            <div>this is content 1 tab</div>
+        </div>
+        <div class="tabcontent tab2">
+            <div>this is content 2 tab</div>
+        </div>
+        <div class="tabcontent tab3 selected">
+            <div>this is content 3 tab</div>
+        </div>
+        <div class="tabcontent tab4">
+            <div>this is content 4 tab</div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.tabTitle a').on('click',function(){
+        var tabAttr=$(this).attr('for-tab');
+        console.log(tabAttr);
+        $('.tabTitle a').removeClass('selected');
+        $(this).addClass('selected');
+       $('.tabcontent').removeClass('selected');
+        $('.'+tabAttr).addClass('selected');
+    });
+</script>
+</body>
+</html>

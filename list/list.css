@@ -1,0 +1,61 @@
+.list {
+  width: 100%;
+  box-sizing: border-box; }
+  .list .listBox {
+    border: 1px solid bisque;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; }
+  .list .listTitle {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px 0 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: bisque;
+    color: #ffffff; }
+  .list .hasArrow.item {
+    position: relative;
+    padding-right: 25px; }
+    .list .hasArrow.item:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -5px;
+      height: 10px;
+      width: 10px;
+      border: 1px solid white;
+      border-top: 0px;
+      border-right: 0;
+      -webkit-transform: rotate(-145deg); }
+  .list .icon.item {
+    position: relative;
+    padding-right: 60px; }
+    .list .icon.item:before {
+      content: '';
+      height: 15px;
+      width: 15px;
+      background: url(../1.png) no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 50%;
+      margin-top: -5px;
+      right: 40px; }
+  .list .item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    border-top: 1px solid gray;
+    box-sizing: border-box; }
+    .list .item .hasChild {
+      display: flex;
+      padding: 5px 0; }
+      .list .item .hasChild .itemHalf {
+        flex: 1; }
+      .list .item .hasChild .itemThird {
+        flex: 3; }
+
+.item:nth-child(1) {
+  border-top: 0; }
+
+/*# sourceMappingURL=list.css.map */

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="data.js"></script>
+    <script src="common.js"></script>
+
+
+
+</head>
+<body>
+    <div id="vers1ion"></div>
+    <div id="content"></div>
+    <div id="address"></div>
+    <script>
+
+        function $$(id) {
+            var el = document.getElementById(id));
+            return document.getElementById(id);
+        }
+
+        (function(){
+            try{
+                $$("version").innerHTML = mtel.lang.text.about.version.title;
+                $$("content").innerHTML = mtel.lang.text.about.content.title;
+                $$("address").innerHTML = mtel.lang.text.about.address.title;
+            }catch(e){
+                console.log(e)
+            }
+
+        })()
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+$botton-bg-color:#fff;
+$button-bg-color-red:#ececec ;
+$botton-border-color:#00ff00;
+$botton-font-color:#00ff00;
+$active-bg-color:#fff;
+$active-border-color:#00ffee;
+
+$botton-height:20px;
+$botton-small-height:20px;
+$botton-large-height:20px;
+
+$botton-border-radius:5px;
+$botton-padding:5px;
+$botton-margin:5px;
+$botton-font-size:12px;
+$botton-border-width:1px;
+$botton-block-margin:10px;
+
+@mixin botton-style($button-bg-color-red,$botton-border-color,$botton-font-color,$active-bg-color,$active-border-color){
+  background-color:$button-bg-color-red;
+  border-color: $botton-border-color;
+  color:$botton-font-color;
+  &:hover{
+    color:$botton-font-color;
+    text-decoration: none;
+  }
+  &:active{
+    text-decoration: none;
+    color:$botton-border-color;
+  }
+}
+@mixin button-clear($color,$font-size:''){
+  &.button-clear{
+    border-color:transparent;
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    @if $font-size!=''{
+      font-size:$font-size;
+    }
+  }
+}
+@mixin button-outline($color,$text-color:''){
+  &.button-outline{
+  background: transparent;
+}
+}
+.button{
+  @include botton-style($button-bg-color-red,$botton-border-color,$botton-font-color,$active-bg-color,$active-border-color);
+  position: relative;
+  display: inline-block;
+  margin:0px;
+  padding:$botton-padding;
+  min-width: $botton-padding*3+$botton-font-size;
+  min-height: $botton-height;
+  vertical-align: top;
+  text-align: center;
+  text-overflow: ellipsis;
+  border-width: $button-bg-color-red;
+  border-style: solid;
+  border-radius: $botton-border-radius;
+  font-size: $botton-font-size;
+  line-height: $botton-height - $botton-border-width+1px;
+  &.button-block{
+    margin-bottom: $botton-block-margin;
+    margin-top: $botton-block-margin;
+  }
+  &.icon-left:before{
+    display: inline-block;
+    float:left;
+    padding-left:.2em;
+    padding-right: 0px;
+    content:'';
+    height: 20px;
+    width: 20px;
+    vertical-align: top;
+    background: url("../1.png") no-repeat 0 0 ;
+    background-size: 100% 100%;
+  }
+  &.icon-right:after{
+    content: '';
+    display:inline-block;
+    float:right;
+    padding-right: .2em;
+    padding-left:0px;
+    vertical-align: top;
+    height: 20px;
+    width: 20px;
+    vertical-align: top;
+    background: url("../1.png") no-repeat 0 0 ;
+    background-size: 100% 100%;
+
+  }
+  &.button-red{
+    @include botton-style(blue,blue,blue,blue,blue);
+  }
+  &.button-green{
+    @include botton-style(green,green,green,green,green);
+  }
+}
+.button-block{
+  display: block;
+  clear:both;
+  width: 100%;
+  box-sizing: border-box;
+  &:after{
+    clear: both;
+  }
+}
+.botton-full{
+  display: block;
+  margin: 0px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+a.button{
+  text-decoration: none;
+}
+.button-clear{
+  @include button-clear(red);
+}
+.button-outline{
+  @include button-outline(red);
+  background: none;
+  box-shadow: none;
+}

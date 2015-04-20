@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .slideBox {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .slideBox .hd {
+            width: 100%;
+            text-align: center;
+            padding-top:30px;
+        }
+        .slideBox .hd ul {
+            display: block;
+            text-align: center;
+        }
+        .slideBox .hd ul li {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background: #d0d1cd;
+            margin: 0 2px;
+            vertical-align: top;
+            overflow: hidden;
+            text-indent: -9999em;
+        }
+        .slideBox .hd ul li.on {
+            background: #333333;
+        }
+
+        .slideBox .bd {
+            position: relative;
+            z-index: 0;
+        }
+
+        .slideBox .bd li {
+            position: relative;
+            text-align: center;
+        }
+
+        .slideBox .bd li img {
+            vertical-align: top;
+            width: 100%;
+        }
+
+        .slideBox .bd li .pic{
+            padding: 35px 50px 30px 50px;;
+        }
+        .slideBox .bd li .txt{
+            line-height: 20px;
+            font-size: 14px;
+            height: 40px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="slide" class="slideBox">
+    <div class="bd">
+        <ul>
+            <li>
+                <div class="pic">
+                    <img src="screen.png" alt=""/>
+                </div>
+                <div class="txt">
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="screen.png" alt=""/>
+                </div>
+                <div class="txt">
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="screen.png" alt=""/>
+                </div>
+                <div class="txt">
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="screen.png" alt=""/>
+                </div>
+                <div class="txt">
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                    <p>DUMMY TEXT DUADASKL TEXADSA</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="hd">
+        <ul></ul>
+    </div>
+</div>
+
+<script src="TouchSlide.js"></script>
+<script>
+    TouchSlide({
+        slideCell:"#slide",
+        titCell:".hd ul",
+        mainCell:".bd ul",
+        effect:"leftLoop",
+        autoPage:true,
+        switchLoad:"_src"
+    })
+</script>
+</body>
+</html>

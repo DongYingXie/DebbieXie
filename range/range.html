@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>	    
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" type="text/css" href="rang.css">
+<script type="text/javascript" src=""></script>
+</head>
+
+<body>
+range的值為：
+<p id="rangevalue"></p>
+<div class="range">
+    <input type="range" min="0" max="100"  id="rangeTest" onchange="changeValue()" oninput="outputUpdate(value)">
+    <output for="rangeTest" id="outputValue"></output>
+</div>
+<script>
+    function outputUpdate(_value){
+        document.getElementById('outputValue').value=_value;
+    }
+    function changeValue(){
+        document.getElementById('rangevalue').innerHTML=document.getElementById('rangeTest').value;
+    }
+</script>
+</body>
+</html>
