@@ -1,0 +1,32 @@
+.toggle{
+  width: 100px;
+  position: relative;
+  border-radius: 5px;
+  padding:2px;
+  border: 1px solid gray;
+  overflow: hidden;
+  &:before,&:after{
+    display: table;
+    content:'';
+    font-size: 0;
+  }
+  &:after{
+    clear:both;
+  }
+  .en,.zh{
+    float:left;
+   padding:10px;
+    width:50%;
+    border-radius:5px;
+    box-sizing:border-box;
+    padding:5px;
+    text-align: center;
+    color:black;
+    background-color: #ffffff;
+    transition: all .5s ease-in-out;
+  }
+  .en.selected,.zh.selected{
+   color:#fff;
+    background-color: #0078e7;
+  }
+}

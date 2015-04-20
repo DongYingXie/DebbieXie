@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="toggle.css"/>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="jQuery.translateLanguage.js"></script>
+</head>
+<body>
+<div class="toggle">
+    <div class="en selected languege">Eng</div>
+    <div class="zh languege">中</div>
+</div>
+<div translate="eng1">1</div>
+<div translate="">2</div>
+<div translate>3</div>
+<div translate="eng4">4</div>
+<script>
+    $(document).ready(function(){
+        $.initLange();//初始化轉換語言；
+    });
+    var enObj={
+        'eng1':'test',
+        'eng2':'test2'
+    };
+    var zhObj={
+        'eng1':'中文一',
+        'eng2':'中文二'
+    }
+
+</script>
+</body>
+</html>

@@ -187,37 +187,247 @@ directiveModule.directive('directiveName',  function(){
 ```
 其中：
 * directive 傳入二個參數
-  1. 第一個參數為 指令的名稱；
-  2. 第二個參數為 一個工廠函數
-  3.  該函數返回一個對象，對象的link 方法的函數有四個參數：
+  1. 第一個參數為 指令的名稱；必须是驼峰命名 'testDirective' 如果是test-Directive 是错误的；在视图中则使用test-directive 
+  2. 第二個參數為 一個工廠函數 返回一个json对象；
+  3.  其中 該函數返回一個對象，對象的link 方法的函數有四個參數：
   * $scope 獲取外層scope的引用
   * iElm 它所在的DOM元素
   * attrs 傳遞給指令的一個屬性數組
   * controller DOM元素上的控制器
+  4. templateUrl 的模板必须要有个父标签 如div;
 ```
-myappModule.directive('testDirective',  function(){
+var demo=angular.module('dectiveDemo',[]);
+demo.controller('dectiveCtrl', function(){
+    
+}).directive('demoDiv', function(){
     // Runs during compile
     return {
-         restrict: 'EACM', // E = Element, A = Attribute, C = Class, M = Comment
+         restrict: 'AECM', // E = Element, A = Attribute, C = Class, M = Comment
+         templateUrl: 'demo.html',
+         replace: true,
         link: function($scope, iElm, iAttrs, controller) {
-            iElm.bind('click', function(event) {
-                /* Act on the event */
-                iElm.css({
-                    'color': 'blue'
-                });
-            });
+            
         }
     };
 });
 ```
 ---
 ```html 
-         <test-directive>testDirective color</test-directive>
-         <div class="test-directve">test-directve color</div>
+        <script type="text/ng-template" id="demo.html">
+        <h1>demo div </h1>
+        <h2>error</h2>
+    </script>
+    <div ng-controller="dectiveCtrl">
+        <demo-div></demo-div>
+        <div class='demo-div'></div>
+        <div demo-div></div>
+    </div>
 ```
 ---
+#### 指令 transclude
+默认的情况下：
+transclude:false;//不使用transclude 这个属性；
+transclude:true;//使用transclude 属性的便签；
+* 在指令视图中 包含一些内容 这里称为 一团数据
+* 在指令的模板中用一个ng-transclude 这样渲染视图的时候，将上面的一团数据 放进这里的ng-transclude 标签中；
+如下：
+```java
+var demo=angular.module('dectiveDemo',[]);
+demo.controller('dectiveCtrl', function(){
+    
+}).directive('demoDiv', function(){
+    // Runs during compile
+    return {
+         restrict: 'AECM', // E = Element, A = Attribute, C = Class, M = Comment
+         templateUrl: 'demo.html',
+         replace: true,
+         transclude:true,
+        link: function($scope, iElm, iAttrs, controller) {
+            
+        }
+    };
+});
+```
+```html 
+<script type="text/ng-template" id="demo.html">
+        <div>
+        <h1>demo div </h1>
+        <h2>error</h2>
+        <div ng-transclude></div>                               
+        </div>  
+    </script>
+    <div ng-controller="dectiveCtrl">
+        <demo-div>
+        <p>这里是原来就存在的段落；如果transclude=true ,这里的内容将被保留起来，如果translate=false，这里的内容将不被保留</p>
+        </demo-div>
+    </div>
+```
+---
+### 指令 scope 指定该指令的控制域
+* scope:false,//默认，控制域为当前指令所在元素的本身；
+* scope:true,//指令可以访问到父作用域里的值,父作用域的属性值一旦被修改,子作用域里相应的属性值也会被修改,但是子作用域里的属性值修改,不会影响到父作用域里的属性值
+* scope:{}
+    @ //绑定能让独立作用域访问到父作用域里绑定的属性值,但是独立作用域下的这个值被修改,不影响到父作用域.类似于scope:true,但是仅仅是绑定的属性,而不是全部的属性.
+    = //独立作用域和父作用域之间的某个属性完全共享,无论是父作用域下这个属性被修改还是独立作用域下这个属性被修改,另一个作用域下的这个属性都会同步变化.
+    & //独立作用域可以访问父作用域里的函数.
+```html
+<script type="text/ng-template" id="demo.html">
+        <div>
+        <h1>demo div </h1>
+        {{childrenCtrl}}
+        <h2>error</h2>
+        <input ng-model="childrenCtrl">
+        <div ng-transclude></div>                               
+        </div>  
+    </script>
+    <div ng-controller="dectiveCtrl">
+        <input ng-model="parentCtrl"> 
+        <demo-div attrs-demo={{parentCtrl}}>
+        </demo-div>
+    </div>
+```
+注意：
+* 在demo-div 中父控制器中的parentCtrl 赋值给了 demo-div 的属性attrs-demo ,然后有通过指令的scope 赋值到了childrenCtrl 。这样模板中的childrenCtrl 就是绑定了 父控制器的parentCtrl 值；
+* 同时注意到，attrs-demo={{parentCtrl}} 这里是  {{}} ;
+```java
+var demo=angular.module('dectiveDemo',[]);
+demo.controller('dectiveCtrl', function($scope){
+    $scope.parentCtrl='parent';
+}).directive('demoDiv', function(){
+    // Runs during compile
+    return {
+         restrict: 'AECM', // E = Element, A = Attribute, C = Class, M = Comment
+         templateUrl: 'demo.html',
+         replace: true,
+         transclude:true,
+         scope:{
+            childrenCtrl:'@attrsDemo'
+         },
+        link: function($scope, iElm, iAttrs, controller) {
+            
+        }
+    };
+});
+```
+注意：@attrsDemo 中attrsDemo使用了驼峰命名；指令的视图中则为 attrs-demo
+---
+```html 
+    <script type="text/ng-template" id="demo.html">
+        <div>
+        <h1>demo div </h1>
+        {{childrenCtrl}}
+        <h2>error</h2>
+        <input ng-model="childrenCtrl">
+        <div ng-transclude></div>                               
+        </div>  
+    </script>
+    <div ng-controller="dectiveCtrl">
+        <input ng-model="parentCtrl"> 
+        <demo-div attrs-demo=parentCtrl>
+        </demo-div>
+    </div>
+```
+注意到：
+* attrs-demo=parentCtrl 是 = 
+```java 
+var demo=angular.module('dectiveDemo',[]);
+demo.controller('dectiveCtrl', function($scope){
+    $scope.parentCtrl='parent';
+}).directive('demoDiv', function(){
+    // Runs during compile
+    return {
+         restrict: 'AECM', // E = Element, A = Attribute, C = Class, M = Comment
+         templateUrl: 'demo.html',
+         replace: true,
+         transclude:true,
+         scope:{
+            childrenCtrl:'=attrsDemo'
+         },
+        link: function($scope, iElm, iAttrs, controller) {
+            
+        }
+    };
+});
+```
+注意：
+* childrenCtrl:'=attrsDemo' 也是使用了驼峰命名法；
 
-#### $http.get 
+### 指令 require 和controller （指令与父指令通信，指令使用父指令中的controller）
+```html 
+        <div parent-directive>
+            <div child-directive></div>
+        </div>
+```
+```java
+.directive('parentDirective',function(){
+    return {
+        restrict:'AECM',
+        controller:function($scope){
+            this.callByChild=function(childScope){
+                console.log('这个函数可以被子指令调用，还可以调子指令的 link 里面的数据  如：'+ childScope.data);
+            }
+        }
+    }
+}).directive('childDirective',  function(){
+    // Runs during compile
+    return {
+         require: '^?parentDirective', // Array = multiple requires, ? = optional, ^ = check parent elements
+         restrict: 'AECM', // E = Element, A = Attribute, C = Class, M = Comment
+        link: function($scope, iElm, iAttrs, controller) {
+            $scope.data='我是子指令的数据咯！！！ ';
+            controller.callByChild($scope); //调用父指令的controller 里面的callByChild h函数；
+        }
+    };
+});
+```
+注意：
+* childDirective 中的require 的^?parentDirective为想外层查找指令 parentDirective ，^为找到为止，？为如果没有找到也不会报错！！
+
+### 指令 例子 datapicker
+```html 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="angular.js"></script>
+```
+注意：引用的顺序
+*   jquery.js
+*   jquery-ui.js 
+*   angularjs
+```html 
+<div id="wrapper" >
+  <p>{{datePicker || "00/00/0000"}}</p>
+  <input type="text" ng-model="datePicker" datepicker />
+</div>
+```
+```java
+.directive("datepicker", function () {
+  return {
+    restrict: "AECM",
+    require: "ngModel",
+    link: function (scope, elem, attrs, ngModelCtrl) {
+      var updateModel = function (dateText) {
+        scope.$apply(function () {
+          ngModelCtrl.$setViewValue(dateText);
+        });
+      };
+      var options = {
+        dateFormat: "dd-mm-yy",
+        onSelect: function (dateText) {
+          updateModel(dateText);
+        }
+      };
+      elem.datepicker(options);
+    }
+  }
+});
+```
+注意到：
+* require: "ngModel" 需要angular 的内置指令ngModel ,和写法；
+* ngModelCtrl.$setViewValue(dateText); 这里设置了指令的视图中的 ng-model的值；
+* scope.$apply（） 则是马上渲染视图；
+
+### $http.get 
 $http.get('url',{}).sucess(function(data,status,config){}).error(function(data,status,header,config){});
 * url: 請求的路徑
 * json對象： 請求的參數配置，如{params:{id:5}} 得到的路徑為 url?id=5
