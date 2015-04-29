@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>	    
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="js/lib/angular.js"></script>
+ <script type="text/javascript" src="js/lib/ui-routers.js"></script> 
+<script type="text/javascript" src="js/routers.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+<script type="text/javascript" src="js/factory.js"></script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="mainCtrl">
+	<div class="headerBox">
+		<ul class="nav">
+			<li ng-repeat="nav in navs"><a href="{{nav.link}}" ng-class="{selected:$index==navIndex}" ng-click="clickNav($index)">{{nav.name}}</a></li>
+		</ul>
+	</div>
+	<div class="contentBox">
+		<ui-view></ui-view>
+	</div>
+</div>
+</body>
+</html>

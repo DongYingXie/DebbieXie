@@ -1,0 +1,188 @@
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+input,textarea{
+	outline: none;
+}
+html,body{
+	height: 100%;
+	width: 100%;
+}
+body{
+	background: url(../img/bg.png) no-repeat;
+	background-size: 25% 25%;
+	background-position: 90% 90%;
+}
+.headerBox{
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.nav{
+	display: table;
+	width: 100%;
+}
+.nav li{
+	display: table-cell;
+	text-align: center;
+}
+.nav li a{
+	display: inline-block;
+	padding: 10px;
+	color:rgb(255,170,4);
+}
+.nav li a.selected{
+	color:#fff;
+	background: rgb(50,50,50);
+	border-radius: 5px;
+}
+.Section{
+	margin: 10px;
+}
+.formBox{
+
+}
+.formHeader{
+	height: 44px;
+	text-align: center;
+
+}
+.formHeader h3{
+	color:rgb(50,50,50);
+}
+.formHeader P{
+	color:rgb(0,117,190);
+}
+.Form{
+	margin-top:10px;
+	margin-bottom: 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+}
+.email,.password{
+	padding-left: 50px;
+}
+.email{
+	background: url(../img/0-2-login-user.png) no-repeat 10px 10px;
+	background-size: 20px 20px;
+}
+.password{
+	background: url(../img/0-2-login-pw.png) no-repeat 10px 10px;
+	background-size: 20px 20px;
+}
+.email input,.password input{
+	width: 100%;
+	height: 35px;
+	border: none;
+}
+.diverLine{
+	border-bottom: 1px solid gray;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+.formBtn{
+	margin-top: 20px;
+	text-align: center;
+}
+.btn{
+	display: inline-block;
+	min-height: 40px;
+	line-height: 40px;
+	width: 100%;
+	text-align: center;
+}
+.btn-blue{
+	background: rgb(0,117,190);
+	color:#fff;
+	border-radius: 5px;
+}
+.btn-half{
+	width: 50%;
+}
+.formFooter{
+	margin: 20px 0;
+	text-align: justify;
+}
+.formFooter:after{
+	content: '';
+	display: inline-block;
+	width: 100%;
+	height: 0;
+}
+.formFooter div{
+	display: inline-block;
+}
+.formFooter a{
+	color:rgb(0,117,190);
+}
+.list{
+	width: 100%;
+}
+.list li{
+	display: table;
+	width: 100%;
+}
+.list li a{
+     display: table-cell;
+     vertical-align: middle;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     border-bottom: 1px solid gray;
+     margin-right: 20px;
+     position: relative;
+}
+.list li a div{
+	height: 25px;
+	line-height: 25px;
+}
+.list li a:after{
+	content: '';
+	height: 15px;
+	width: 15px;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	position: absolute;
+	top:50%;
+	margin-top: -7.5px;
+	right: 5px;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+
+}
+.editorHeader{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.editorContent{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.editorContent input,.editorContent textarea{
+	width: 100%;
+}
+.editorTitle{
+	margin-bottom: 10px;
+}
+.editorTitle input{
+	height: 30px;line-height: 30px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	padding-left: 5px;
+		box-sizing:border-box;
+}
+.editorTextarea{
+	
+	margin-bottom: 10px;
+}
+.editorTextarea textarea{
+	border-radius: 5px;
+	padding: 5px;
+	box-sizing:border-box;
+}

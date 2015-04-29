@@ -1,0 +1,9 @@
+{
+	"name":"angularDemo",
+	"version":"0.0.1",
+	"description":"angularDemo",
+	"dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  }
+}
